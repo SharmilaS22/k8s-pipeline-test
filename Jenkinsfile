@@ -28,6 +28,8 @@ pipeline {
                     kubectl apply -f deployment.yaml
                     kubectl apply -f service.yaml
                     echo $(minikube service my-node-service --url)
+                    echo "cleaning up the local images ......."
+                    docker rmi "${DOCKER_IMAGE_NAME}":latest
 
                 '''
             }
